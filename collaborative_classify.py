@@ -480,9 +480,9 @@ with firstdiv:
 
     contrib_view_type = charcols1[0].radio("View type:",["raw","cumulative"])
     if contrib_view_type == "raw":
-        charcols1[1].altair_chart(contrib_bar.properties(width=640),use_container_width=True)
+        charcols1[1].altair_chart(contrib_bar.properties(width=600),use_container_width=True)
     elif contrib_view_type == "cumulative":
-        charcols1[1].altair_chart(contrib_cumu.properties(width=640),use_container_width=True)
+        charcols1[1].altair_chart(contrib_cumu.properties(width=600),use_container_width=True)
 
 
 with nextdiv:
@@ -535,7 +535,7 @@ with nextdiv:
                                   "lowerbound":np.array(paramsin[0:np.sum(np.array(inclpcin))]) - 1.96*np.array(bsein[0:np.sum(np.array(inclpcin))]),
                                   "upperbound":np.array(paramsin[0:np.sum(np.array(inclpcin))]) + 1.96*np.array(bsein[0:np.sum(np.array(inclpcin))])
                                 })
-        coeff_chart = alt.Chart(coeffs_df,width=480,height=240)
+        coeff_chart = alt.Chart(coeffs_df,width=400,height=200)
         squaresout = coeff_chart.mark_square().encode(x=alt.X("PC_number",axis=alt.Axis(grid=False,title="Principal Component"),scale=alt.Scale(domain=[0.5,9.5],clamp=True,nice=False)),
                                                    y=alt.Y("coeff_value",axis=alt.Axis(grid=False,title="Estimated Coefficient")),
                                                    tooltip=[alt.Tooltip("PC_number",title="Principal Component"),
@@ -678,7 +678,7 @@ with nextdiv:
                                                    color=alt.Color(theattr + "?",scale=alt.Scale(domain=['YES','NO','Not classified'],
                                                                                                    range=['green','red','lightgrey'])),
                                                    opacity=alt.condition(~hlelement,alt.value(.9),alt.value(.5))).properties(
-                                                        width=640,height=300
+                                                        width=600,height=300
                                             ).add_selection(hlelement)
     showresults_bar = resultsbarchart(showresults_chart,highlighter,attribute)
     cutoff = alt.Chart(pd.DataFrame({'y':[threshscore]})).mark_rule(color='blue',strokeDash=[5,3],opacity=.7).encode(y='y')
