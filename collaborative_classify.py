@@ -651,7 +651,7 @@ with nextdiv:
         mime='text/csv',
         )    
     st.write("---")    
-    setthreshcols = st.columns([2,6])
+    setthreshcols = st.columns([3,8])
     threshscore = setthreshcols[0].number_input("Threshold score",min_value=0.,max_value=1.,value=0.5,step=.01)
     threshscoreind = int(threshscore*100)
     setthreshcols[1].write(f"""| Sensitivity (aka Recall) | Specificity | Precision |
@@ -761,7 +761,7 @@ with finaldiv:
                                     "Both"
 
 
-        return alt.Chart(combined_results,width=480,height=420).mark_point().encode(x=alt.X(attr1 + "_rank",scale=alt.Scale(reverse=True)),
+        return alt.Chart(combined_results,width=400,height=350).mark_point().encode(x=alt.X(attr1 + "_rank",scale=alt.Scale(reverse=True)),
                                                                                           y=alt.Y(attr2 + "_rank",scale=alt.Scale(reverse=True)),
                                                                       tooltip=[alt.Tooltip("occup_title",title="Occupation"),
                                                                                alt.Tooltip(attr1 + "_score",title=attr1 + " score",format='.3f'),
